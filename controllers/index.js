@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const calculateWinner = require('../helper/calculateWinner');
 const db = [];
 
+exports.db = db;
+
 exports.all = (req, res, next) => {
   res.json(db);
 };
@@ -33,22 +35,6 @@ exports.startGame = (req, res, next) => {
 exports.makeMove = (req, res, next) => {
   const { gameId } = req.tokenData;
   const { position, player } = req.body;
-
-  // Check can player make a move.
-  if (db[gameId].lastMove === player) {
-    const error = new Error(`Player ${player} already made the move.`);
-    return next(error);
-  }
-  // Check if game has been finished
-  if (db[gameId].winner) {
-    const error = new Error(`Game is finished, winner is ${player}`);
-    return next(error);
-  }
-  // Check if position is already marked
-  if (db[gameId].board[position]) {
-    const error = new Error(`This position is already marked!`);
-    return next(error);
-  }
   // Update game data
   db[gameId].board[position] = player;
   db[gameId].lastMove = player;

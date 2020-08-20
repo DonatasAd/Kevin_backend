@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const controllers = require('./controllers/index');
 const checkToken = require('./middleware/checkToken');
+const validation = require('./middleware/validation');
 const port = 3500;
 
 const app = express();
@@ -14,7 +15,7 @@ app.use(express.json());
 app.get('/', controllers.all);
 app.get('/load-game', checkToken, controllers.loadGame);
 app.get('/start-game', controllers.startGame);
-app.post('/makemove', checkToken, controllers.makeMove);
+app.post('/makemove', checkToken, validation, controllers.makeMove);
 
 // error handling
 app.use((req, res, next) => {
