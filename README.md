@@ -1,6 +1,6 @@
 # Kevin_backend
 
-DOCKER
+## DOCKER
 
 To build project with docker:
 execute command "docker build -t kevin_backend ."
@@ -9,22 +9,13 @@ execute command "docker run -p 3500:3500 -d kevin_backend"
 To stop docker immage:
 execute command "docker stop [CONTAINER ID]"
 
----
-
-RUN PROJECT LOCALLY
+## RUN PROJECT LOCALLY
 node.js is required
-
----
-
 Execute commands
 "npm i"
 "npm start"
 
----
-
 ## ROUTES
-
----
 
 GET "http://localhost:3500/" - get all games returns Array with game objects
 
@@ -67,11 +58,7 @@ returns
 
 ## Task
 
-Program game:
-
-_X_|___|___ 
-___|_X_|___ 
-___|___| X
+Program game: tick-tack-toe
 
 Basic requirements: 
 
