@@ -3,9 +3,9 @@
 DOCKER
 
 To build project with docker:
-execute command "docker build -t keving_backend ."
+execute command "docker build -t kevin_backend ."
 To run docker immage:
-execute command "docker run -p 3500:3500 -d keving_backend"
+execute command "docker run -p 3500:3500 -d kevin_backend"
 To stop docker immage:
 execute command "docker stop [CONTAINER ID]"
 
