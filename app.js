@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 // Routes
 app.get('/', controllers.all);
-app.get('/load-game', checkToken, controllers.loadGame);
+app.post('/load-game', checkToken, controllers.loadGame);
 app.get('/start-game', controllers.startGame);
 app.post('/makemove', checkToken, validation, controllers.makeMove);
 
