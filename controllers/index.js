@@ -35,6 +35,18 @@ exports.startGame = (req, res, next) => {
 exports.makeMove = (req, res, next) => {
   const { gameId } = req.tokenData;
   const { position, player } = req.body;
+  // Check can player make a move.
+  if (db[gameId].lastMove === player) {
+    throw new Error(`Player ${player} already made the move.`);
+  }
+  // Check if game has been finished
+  if (db[gameId].winner) {
+    throw new Error(`Game is finished, winner is ${player}`);
+  }
+  // Check if position is already marked
+  if (db[gameId].board[position]) {
+    throw new Error(`This position is already marked!`);
+  }
   // Update game data
   db[gameId].board[position] = player;
   db[gameId].lastMove = player;

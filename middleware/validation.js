@@ -1,5 +1,3 @@
-const { db } = require('../controllers/index');
-
 const validation = async (req, res, next) => {
   try {
     const { gameId } = req.tokenData;
@@ -18,18 +16,6 @@ const validation = async (req, res, next) => {
     // Check if palyer value is valid
     if (player !== 'X' && player !== 'O') {
       throw new Error(`Invalid player value must be 'X' or 'O'`);
-    }
-    // Check can player make a move.
-    if (db[gameId].lastMove === player) {
-      throw new Error(`Player ${player} already made the move.`);
-    }
-    // Check if game has been finished
-    if (db[gameId].winner) {
-      throw new Error(`Game is finished, winner is ${player}`);
-    }
-    // Check if position is already marked
-    if (db[gameId].board[position]) {
-      throw new Error(`This position is already marked!`);
     }
     return next();
   } catch (error) {
